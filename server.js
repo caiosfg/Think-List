@@ -1,8 +1,14 @@
 const express =  require('express')
 const app = express()
-// const PORT = 3000
 const mongoose = require('mongoose')
 const {PORT, mongoUri} = require('./config')
+const cors = require( 'cors')
+const morgan = require('morgan')
+const bodyParser = require('body-parser')
+
+app.use(cors())
+app.use(morgan('tiny'))
+app.use(bodyParser.json())
 
 mongoose
     .connect(mongoUri, {
