@@ -22,7 +22,9 @@
 
 1. Altere o *config.js*, para o endereço de sua base de dados no MongoAtlas.
 
-2. Execute o comando abaixo:
+2. Altere o */models/ThinkListItem.js*, para suas credenciais de acesso ao Pipedrive.
+
+3. Execute o comando abaixo:
 
 > `node server.js`
 
