@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Tarefas</h1>
+    <TaskGrid :tasks="tasks" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TaskGrid from './components/TaskGrid.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components:{ TaskGrid},
+  data(){
+    return {
+       tasks:[
+         { name: 'Lavar a louça', pending: false },
+         { name: 'Arrumar quintal', pending: true }
+       ]
+    }
   }
 }
 </script>
