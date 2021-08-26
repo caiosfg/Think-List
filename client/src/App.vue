@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Tarefas</h1>
     <NewTask @taskAdded="addTask" />
-    <TaskGrid :tasks="tasks" />
+    <TaskGrid @taskDeleted="deleteTask" :tasks="tasks" />
   </div>
 </template>
 
@@ -29,6 +29,9 @@ export default {
           name: task.name,
           pending: task.pending || true
         })
+    },
+    deleteTask(i){
+      this.tasks.splice(i, 1)
     }
   }
 }
