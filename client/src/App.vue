@@ -12,17 +12,24 @@
 <script>
 import TaskGrid from './components/TaskGrid.vue'
 import NewTask from './components/NewTask.vue'
+import axios from "axios";
 
 export default {
   name: 'App',
   components:{ NewTask, TaskGrid},
   data(){
     return {
-       tasks:[
-         { name: 'Lavar a louça', pending: false },
-         { name: 'Arrumar quintal', pending: true }
-       ]
+       tasks: null
     }
+  },
+  mounted(){
+    axios.get("http://localhost:3000/")
+      .then(res => {
+          this.tasks = res.data
+      })
+      .catch(error => {
+          console.log(error);
+      })
   },
   methods: {
     addTask(task){

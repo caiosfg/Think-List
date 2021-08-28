@@ -1,28 +1,18 @@
-const express =  require('express')
+const express = require('express')
 const app = express()
-const mongoose = require('mongoose')
-const {PORT, mongoUri} = require('./config')
-const cors = require( 'cors')
-const morgan = require('morgan')
-const bodyParser = require('body-parser')
+const port = 3000
 
-app.use(cors())
-app.use(morgan('tiny'))
-app.use(bodyParser.json())
+app.get('/', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Request-Width, Content-Type, Accept");
 
-mongoose
-    .connect(mongoUri, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-        useFindAndModify:false
-    })
-    .then(() => console.log('MongoDB database Connected ...'))
-    .catch((err) => console.log(err))
+    res.json([
+        { name: 'Lavar a louça', pending: false },
+        { name: 'Arrumar quintal', pending: true }
+    ])
 
-/**
- * Port Listening
- */
-app.listen(PORT, () => console.log(`App listening in ${PORT}`))
+})
 
-app.get('/', (req, res) => res.send('Hello'))
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})

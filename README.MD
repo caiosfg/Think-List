@@ -8,23 +8,18 @@
 
 <p align="center">
     <img src="https://img.shields.io/static/v1?label=Express&message=4.17&color=7159c1&style=for-the-badge&logo=ghost"/>
-    <img src="https://img.shields.io/static/v1?label=MongoDB&message=4.4&color=e63946&style=for-the-badge&logo=ghost"/>
     <img src="https://img.shields.io/static/v1?label=VueJs&message=4.5&color=899D78&style=for-the-badge&logo=ghost"/>
 </p>
 
 ### Structure
 
 - [x] Express ;
-- [x] MongoDB (Atlas);
 - [x] VueJs frontend;
 
 ### Requirements
 
-1. Altere o *config.js*, para o endereço de sua base de dados no MongoAtlas.
 
-2. Altere o */models/ThinkListItem.js*, para suas credenciais de acesso ao Pipedrive.
-
-3. Execute o comando abaixo:
+1. Execute o comando abaixo:
 
 > `node server.js`
 
