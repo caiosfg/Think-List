@@ -21,24 +21,34 @@ export default {
   components:{ NewTask, TaskGrid, TaskProgress},
   data(){
     return {
-       tasks: null
+       tasks: null,
+       total : 0
     }
   },
   computed: {
     progress(){
-      const total =  this.tasks.length
-      const done =  this.tasks.filter(t => !t.pending).length
-      return Math.round(done / total * 100) || 0
+      const done =  this.tasks?.filter(t => !t.pending).length
+      return Math.round(done / this.total * 100) || 0
+    }
+  },
+  watch:{
+    tasks(){
+      localStorage.setItem('tasks', JSON.stringify(this.tasks))
     }
   },
   mounted(){
     axios.get("http://localhost:3000/")
       .then(res => {
           this.tasks = res.data
+          this.total = this.tasks.length
       })
       .catch(error => {
           console.log(error);
       })
+  },
+  created(){
+    const json = localStorage.getItem('tasks')
+    this.tasks = JSON.parse(json) || []
   },
   methods: {
     addTask(task){
@@ -61,6 +71,8 @@ export default {
 
 <style>
 #app {
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
